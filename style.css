@@ -1657,7 +1657,7 @@ button {
 }
 
 }
-/* ToDo入力欄：期限と優先度を縦に並べる */
+/* ToDoの期限と優先度を縦に配置 */
 #todoForm .form-row {
   display: flex;
   flex-direction: column;
@@ -1669,11 +1669,13 @@ button {
 #todoForm .form-row > * {
   width: 100%;
   min-width: 0;
+  box-sizing: border-box;
 }
 
 #todoForm input,
 #todoForm select {
   width: 100%;
+  max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
 }
