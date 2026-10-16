@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>NOIR | Life Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" id="homeLink">
+      <span class="brand-mark">N.</span>
+      <span>NOIR</span>
+    </a>
+    <span class="topbar-label">LIFE MANAGEMENT</span>
+  </header>
+
+  <main class="app">
+
+    <!-- HOME -->
+    <section id="homeView" class="view active">
+      <div class="welcome">
+        <p class="eyebrow" id="todayLabel">YOUR PERSONAL SPACE</p>
+        <h1>Manage your life.<br><span>On your terms.</span></h1>
+      </div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">OVERVIEW</p>
+          <h2>今日のダッシュボード</h2>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <button type="button" class="summary-card todo-summary" data-view="todoView">
+          <span class="card-top"><span>TO DO</span><span>&#8599;</span></span>
+          <strong id="homeTodoCount">0</strong>
+          <span class="card-caption">未完了のタスク</span>
+          <span id="homeNextTodo" class="card-detail">タスクを追加しよう</span>
+        </button>
+
+        <button type="button" class="summary-card money-summary" data-view="moneyView">
+          <span class="card-top"><span>MONEY</span><span>&#8599;</span></span>
+          <strong id="homeBalance">\0</strong>
+          <span class="card-caption">今月の収支</span>
+          <span id="homeMoneyDetail" class="card-detail">収入と支出を管理</span>
+        </button>
+
+        <button type="button" class="summary-card attendance-summary" data-view="attendanceView">
+          <span class="card-top"><span>ATTENDANCE</span><span>&#8599;</span></span>
+          <strong id="homeAttendanceCount">0<span class="unit">科目</span></strong>
+          <span class="card-caption">登録済みの科目</span>
+          <span id="homeAttendanceDetail" class="card-detail">欠席状況をチェック</span>
+        </button>
+      </div>
+
+      <section class="home-section">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="eyebrow">UPCOMING</p>
+            <h2>これからのタスク</h2>
+          </div>
+          <button type="button" class="text-button" data-view="todoView">すべて見る &#8594;</button>
+        </div>
+        <div id="homeTodoList" class="item-list"></div>
+      </section>
+
+      <section class="home-section">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="eyebrow">QUICK ACCESS</p>
+            <h2>管理メニュー</h2>
+          </div>
+        </div>
+
+        <div class="menu-list">
+          <button type="button" class="menu-item" data-view="attendanceView">
+            <span class="menu-icon">01</span>
+            <span class="menu-copy">
+              <strong>欠席管理</strong>
+              <small>出席状況・欠席可能回数</small>
+            </span>
+            <span class="menu-arrow">&#8594;</span>
+          </button>
+
+          <button type="button" class="menu-item" data-view="moneyView">
+            <span class="menu-icon">02</span>
+            <span class="menu-copy">
+              <strong>お金管理・貯金</strong>
+              <small>収入・支出・貯金目標・進捗</small>
+            </span>
+            <span class="menu-arrow">&#8594;</span>
+          </button>
+
+          <button type="button" class="menu-item" data-view="todoView">
+            <span class="menu-icon">03</span>
+            <span class="menu-copy">
+              <strong>ToDoリスト</strong>
+              <small>タスク・期限・優先度</small>
+            </span>
+            <span class="menu-arrow">&#8594;</span>
+          </button>
+        </div>
+      </section>
+    </section>
+
+    <!-- ATTENDANCE -->
+    <section id="attendanceView" class="view">
+      <button type="button" class="back-button" data-view="homeView">← ホームに戻る</button>
+
+      <div class="page-heading">
+        <p class="eyebrow">01 / ATTENDANCE</p>
+        <h1>欠席管理</h1>
+        <p>科目ごとの欠席数と、残りの欠席可能回数を管理。</p>
+      </div>
+
+      <div id="attendanceStats" class="stat-strip"></div>
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SUBJECTS</p>
+          <h2>科目一覧</h2>
+        </div>
+      </div>
+
+      <div id="attendanceList" class="item-list"></div>
+
+      <div id="attendanceEmpty" class="empty-state">
+        まだ科目が登録されていません。＋から追加しよう。
+      </div>
+    </section>
+
+    <!-- MONEY AND SAVINGS -->
+    <section id="moneyView" class="view">
+      <button type="button" class="back-button" data-view="homeView">← ホームに戻る</button>
+
+      <div class="page-heading">
+        <p class="eyebrow">02 / FINANCE</p>
+        <h1>お金管理</h1>
+        <p>収入・支出・貯金をまとめて管理する。</p>
+      </div>
+
+      <!-- MONTHLY BALANCE -->
+      <section class="money-overview">
+        <p class="eyebrow">THIS MONTH'S BALANCE</p>
+        <strong id="monthBalance">\0</strong>
+
+        <div class="money-split">
+          <div>
+            <span>収入</span>
+            <strong id="monthIncome">\0</strong>
+          </div>
+          <div>
+            <span>支出</span>
+            <strong id="monthExpense">\0</strong>
+          </div>
+        </div>
+      </section>
+
+     
+
+      <!-- SAVINGS GOALS -->
+      <section class="money-savings-goals">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">YOUR GOALS</p>
+            <h2>貯金目標一覧</h2>
+            <p>目標金額・現在の貯金額・達成率を確認。</p>
+          </div>
+        </div>
+         <div id="savingsList" class="item-list"></div>
+        <div id="savingsEmpty" class="empty-state">
+          貯金目標がまだありません。＋ボタンから追加してください。
+        </div>
+      </section>
+
+      <!-- TRANSACTIONS -->
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">TRANSACTIONS</p>
+          <h2>取引履歴</h2>
+        </div>
+      </div>
+
+      <div id="moneyList" class="item-list"></div>
+
+      <div id="moneyEmpty" class="empty-state">
+        まだ記録がありません。＋から収入や支出を追加しよう。
+      </div>
+    </section>
+
+    <!-- TODO -->
+    <section id="todoView" class="view">
+      <button type="button" class="back-button" data-view="homeView">← ホームに戻る</button>
+
+      <div class="page-heading">
+        <p class="eyebrow">03 / TASK MANAGEMENT</p>
+        <h1>ToDoリスト</h1>
+        <p>やることを整理して、ひとつずつ進める。</p>
+      </div>
+
+      <div class="filter-row">
+        <button type="button" class="filter-button active" data-filter="all">すべて</button>
+        <button type="button" class="filter-button" data-filter="active">未完了</button>
+        <button type="button" class="filter-button" data-filter="done">完了</button>
+      </div>
+
+      <div id="todoList" class="item-list"></div>
+
+      <div id="todoEmpty" class="empty-state">
+        タスクはまだありません。＋から追加しよう。
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-nav" aria-label="メインメニュー">
+    <button type="button" class="nav-item active" data-view="homeView">
+      <span>&#8962;</span>
+      <small>HOME</small>
+    </button>
+
+    <button type="button" class="nav-item" data-view="attendanceView">
+      <span>&#9825;</span>
+      <small>ATTENDANCE</small>
+    </button>
+
+    <button type="button" class="nav-item" data-view="moneyView">
+      <span>&#165;</span>
+      <small>MONEY</small>
+    </button>
+
+    <button type="button" class="nav-item" data-view="todoView">
+      <span>&#9745;</span>
+      <small>TO DO</small>
+    </button>
+  </nav>
+
+  <!-- FLOATING ADD BUTTON -->
+  <button type="button" id="addButton" class="floating-add" aria-label="追加">
+    <span>＋</span>
+  </button>
+
+  <!-- ADD MODAL -->
+  <div id="modalBackdrop" class="modal-backdrop hidden">
+    <section
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-handle"></div>
+
+      <div class="modal-heading">
+        <div>
+          <p class="eyebrow">QUICK ADD</p>
+          <h2 id="modalTitle">新しく追加</h2>
+        </div>
+        <button type="button" id="closeModal" class="close-button" aria-label="閉じる">×</button>
+      </div>
+
+      <div id="addTypeRow" class="add-type-row">
+        <button type="button" class="add-type active" data-type="todo">ToDo</button>
+        <button type="button" class="add-type" data-type="money">お金</button>
+        <button type="button" class="add-type" data-type="attendance">科目</button>
+        <button type="button" class="add-type" data-type="savings">貯金目標</button>
+      </div>
+
+      <!-- TODO FORM -->
+      <form id="todoForm" class="entry-form">
+        <label>
+          タスク名
+          <input name="title" required maxlength="100" placeholder="例：基本情報の勉強">
+        </label>
+
+        <div class="form-row">
+          <label>
+            期限
+            <input name="dueDate" type="date">
+          </label>
+          <label>
+            優先度
+            <select name="priority">
+              <option value="normal">通常</option>
+              <option value="high">高</option>
+              <option value="low">低</option>
+            </select>
+          </label>
+        </div>
+
+        <button class="primary-button" type="submit">タスクを追加</button>
+      </form>
+
+      <!-- MONEY FORM -->
+      <form id="moneyForm" class="entry-form hidden">
+        <label>
+          種類
+          <select name="kind">
+            <option value="expense">支出</option>
+            <option value="income">収入</option>
+          </select>
+        </label>
+
+        <label>
+          内容
+          <input name="title" required maxlength="100" placeholder="例：アルバイト代・食費">
+        </label>
+
+        <div class="form-row">
+          <label>
+            金額（円）
+            <input name="amount" type="number" min="1" step="1" required placeholder="1000">
+          </label>
+          <label>
+            日付
+            <input name="date" type="date" required>
+          </label>
+        </div>
+
+        <label>
+          カテゴリー
+          <select name="category">
+            <option>その他</option>
+            <option>給料</option>
+            <option>食費</option>
+            <option>美容</option>
+            <option>交通費</option>
+            <option>日用品</option>
+            <option>娯楽</option>
+            <option>貯金</option>
+          </select>
+        </label>
+
+        <button class="primary-button" type="submit">記録を追加</button>
+      </form>
+
+      <!-- ATTENDANCE FORM -->
+      <form id="attendanceForm" class="entry-form hidden">
+        <label>
+          科目名
+          <input name="title" required maxlength="100" placeholder="例：コンピューター概論">
+        </label>
+
+        <div class="form-row">
+          <label>
+            欠席上限（回）
+            <input name="limit" type="number" min="1" step="1" required placeholder="18">
+          </label>
+          <label>
+            現在の欠席数
+            <input name="absences" type="number" min="0" step="1" required value="0">
+          </label>
+        </div>
+
+        <button class="primary-button" type="submit">科目を追加</button>
+      </form>
+
+      <!-- SAVINGS FORM -->
+      <form id="savingsForm" class="entry-form hidden">
+        <label>
+          目標名・何のための貯金？
+          <input name="title" required maxlength="100" placeholder="例：旅行">
+        </label>
+
+        <div class="form-row">
+          <label>
+            目標金額（円）
+            <input name="target" type="number" min="1" step="1" required placeholder="100000">
+          </label>
+          <label>
+            現在の貯金額（円）
+            <input name="saved" type="number" min="0" step="1" required value="0">
+          </label>
+        </div>
+
+        <label>
+          貯金の期限
+          <input name="deadline" type="date" required>
+        </label>
+
+        <button class="primary-button" type="submit">貯金目標を追加</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- TOAST MESSAGE -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <span>NOIR</span>
+    <span>YOUR LIFE, IN BALANCE.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

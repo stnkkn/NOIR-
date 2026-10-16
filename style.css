@@ -1,0 +1,1657 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #0c0c0d;
+  --panel: #151517;
+  --panel-light: #1c1c1f;
+  --line: #303034;
+  --text: #f4f4f5;
+  --muted: #929297;
+  --silver: #c7c7cc;
+  --accent: #e4e4e7;
+  --danger: #ed9999;
+  --success: #a8d8bd;
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  padding-bottom: 110px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--silver);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* ヘッダー */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  height: 72px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #242427;
+  background: rgba(12, 12, 13, .94);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--text);
+  letter-spacing: 4px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  background: var(--text);
+  color: #111;
+  font-size: 15px;
+  letter-spacing: -1px;
+  border-radius: 9px;
+}
+
+.topbar-label,
+.eyebrow {
+  color: var(--muted);
+  letter-spacing: 2px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* 全体 */
+
+.app {
+  width: min(100% - 48px, 1000px);
+  margin: 0 auto;
+}
+
+.view {
+  display: none;
+  padding-top: 48px;
+}
+
+.view.active {
+  display: block;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+/* ホーム */
+
+.welcome {
+  padding: 36px 0 40px;
+}
+
+.welcome .eyebrow {
+  margin-bottom: 18px;
+}
+
+.welcome h1 {
+  font-size: clamp(32px, 5vw, 54px);
+  line-height: 1.22;
+  letter-spacing: -1.8px;
+  font-weight: 500;
+  margin-bottom: 17px;
+}
+
+.welcome h1 span {
+  color: #929297;
+}
+
+.welcome-sub {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin: 34px 0 18px;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 5px;
+}
+
+.section-heading h2 {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.section-heading p:not(.eyebrow) {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  min-height: 180px;
+  padding: 21px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, #19191c, #111113);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .2s, transform .2s;
+}
+
+.summary-card:hover {
+  border-color: #77777e;
+  transform: translateY(-2px);
+}
+
+.card-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  font-size: 10px;
+}
+
+.summary-card > strong {
+  font-size: clamp(24px, 3vw, 33px);
+  font-weight: 500;
+  margin-top: 20px;
+  letter-spacing: -1px;
+  overflow-wrap: anywhere;
+}
+
+.unit {
+  font-size: 12px;
+  color: var(--muted);
+  margin-left: 6px;
+  letter-spacing: 0;
+}
+
+.card-caption {
+  color: #d1d1d5;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.card-detail {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 12px;
+}
+
+.home-section {
+  margin-top: 46px;
+}
+
+.compact-heading {
+  margin-top: 0;
+}
+
+.text-button,
+.back-button {
+  border: 0;
+  background: none;
+  color: var(--silver);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 8px 0;
+}
+
+.text-button:hover,
+.back-button:hover {
+  color: #fff;
+}
+
+.menu-list,
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  width: 100%;
+  padding: 17px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+
+.menu-item:hover {
+  background: var(--panel-light);
+  border-color: #55555a;
+}
+
+.menu-icon {
+  display: grid;
+  place-items: center;
+  width: 39px;
+  height: 39px;
+  border: 1px solid #3b3b40;
+  border-radius: 11px;
+  color: var(--silver);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.menu-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu-copy strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.menu-copy small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.menu-arrow {
+  color: var(--muted);
+}
+
+/* 各ページ */
+
+.page-heading {
+  margin: 24px 0 30px;
+}
+
+.page-heading .eyebrow {
+  margin-bottom: 9px;
+}
+
+.page-heading h1 {
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.page-heading p:last-child {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.back-button {
+  margin-bottom: 15px;
+}
+
+/* 統計 */
+
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.stat-box {
+  padding: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  min-width: 0;
+}
+
+.stat-box span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.stat-box strong {
+  display: block;
+  font-size: 23px;
+  font-weight: 500;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+
+/* お金管理 */
+
+.money-overview {
+  padding: 25px;
+  border: 1px solid #3c3c41;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #202023, #121214 75%);
+  margin-bottom: 35px;
+}
+
+.money-overview .eyebrow {
+  margin-bottom: 8px;
+}
+
+.money-overview > strong {
+  display: block;
+  font-size: clamp(32px, 6vw, 44px);
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  overflow-wrap: anywhere;
+}
+
+.money-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  border-top: 1px solid #3a3a3e;
+  margin-top: 22px;
+  padding-top: 17px;
+}
+
+.money-split span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.money-split strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+}
+
+.quick-savings-panel,
+.money-savings-goals {
+  min-width: 0;
+}
+
+.quick-savings-panel {
+  padding: 22px;
+  margin: 0 0 30px;
+  border: 1px solid #353539;
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, #18181a, #111113);
+}
+
+.quick-savings-description {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.savings-overview-split {
+  margin-top: 18px;
+}
+
+.savings-goal-count {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.savings-goal-count strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* フィルター */
+
+.filter-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.filter-button {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.filter-button.active {
+  color: #111;
+  background: var(--text);
+  border-color: var(--text);
+}
+
+/* リスト・カード */
+
+.entry-card,
+.list-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 17px;
+}
+
+.list-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+
+.list-card-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.list-card-title {
+  font-size: 13px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.list-card-meta {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+
+.list-card-side {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.list-card-side strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.list-card-side small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 7px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.icon-button {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 4px 8px;
+  border: 1px solid #3a3a3f;
+  border-radius: 9px;
+  background: #202023;
+  color: var(--silver);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.icon-button:hover {
+  border-color: #88888f;
+  background: #29292d;
+}
+
+.icon-button.delete {
+  color: #dbaaaa;
+}
+
+/* ToDo */
+
+.check-button {
+  width: 23px;
+  height: 23px;
+  border: 1px solid #696970;
+  border-radius: 50%;
+  background: transparent;
+  color: #111;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.check-button.checked {
+  background: var(--silver);
+  border-color: var(--silver);
+}
+
+.priority,
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #414146;
+  border-radius: 20px;
+  padding: 2px 8px;
+  font-size: 10px;
+  color: var(--silver);
+  margin-top: 7px;
+}
+
+.priority.high,
+.status-tag.warning {
+  color: var(--danger);
+  border-color: #714343;
+}
+
+.status-tag.safe {
+  color: var(--success);
+  border-color: #355c46;
+}
+
+/* 進捗バー */
+
+.progress-track {
+  height: 5px;
+  background: #303034;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #85858d, #e0e0e4);
+  border-radius: inherit;
+  transition: width .3s ease;
+}
+
+/* 貯金目標カード */
+
+.savings-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 21px;
+  background: linear-gradient(145deg, #18181a, #131315);
+  border: 1px solid #333337;
+  border-radius: 16px;
+  transition: border-color .2s, background .2s;
+}
+
+.savings-card:hover {
+  border-color: #49494f;
+}
+
+.savings-card.selected {
+  border-color: #55555b;
+}
+
+.savings-card .list-card-main {
+  width: 100%;
+  flex: initial;
+}
+
+.savings-card .list-card-title {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.savings-card .list-card-meta {
+  line-height: 1.8;
+}
+
+.savings-card .progress-track {
+  height: 5px;
+  margin: 14px 0 8px;
+}
+
+.savings-progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.savings-progress-label strong {
+  color: var(--silver);
+  font-weight: 500;
+}
+
+.savings-monthly-plan {
+  margin-top: 17px;
+  padding: 13px 14px;
+  border: 1px solid #303034;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .018);
+}
+
+.savings-monthly-plan-label {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.savings-monthly-plan strong {
+  display: block;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: -.5px;
+  overflow-wrap: anywhere;
+}
+
+.savings-monthly-plan p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.savings-monthly-plan.is-complete strong {
+  font-size: 17px;
+  color: var(--success);
+}
+
+.savings-monthly-plan.is-overdue {
+  border-color: #574040;
+}
+
+.savings-monthly-plan.is-overdue strong {
+  color: var(--danger);
+}
+
+/* 貯金・使うボタン：控えめなデザイン */
+
+.savings-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.savings-mode-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 35px;
+  padding: 7px 14px;
+  color: #c4c4c9;
+  background: transparent;
+  border: 1px solid #39393e;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .18s, border-color .18s, color .18s;
+}
+
+.savings-mode-button:hover {
+  background: #202023;
+  border-color: #5a5a61;
+  color: #f4f4f5;
+}
+
+.savings-mode-button.active {
+  background: #29292d;
+  border-color: #77777e;
+  color: #f4f4f5;
+}
+
+.savings-mode-button .button-symbol {
+  color: #9999a1;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* カード内の金額選択 */
+
+.saving-quick-panel {
+  margin-top: 13px;
+  padding: 14px;
+  border: 1px solid #303034;
+  border-radius: 12px;
+  background: #101012;
+  animation: saving-appear .18s ease-out;
+}
+
+.saving-quick-title {
+  margin: 0 0 11px;
+  color: #b9b9bf;
+  font-size: 11px;
+}
+
+.saving-amount-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.saving-amount-button {
+  min-width: 0;
+  min-height: 37px;
+  padding: 7px 4px;
+  color: #c9c9ce;
+  background: #19191c;
+  border: 1px solid #303034;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+
+.saving-amount-button:hover {
+  background: #262629;
+  border-color: #66666d;
+  color: #fff;
+}
+
+.saving-amount-button:active {
+  background: #333338;
+}
+
+.saving-amount-button:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+.savings-card .card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  margin: 14px 0 0;
+}
+
+.savings-card .card-actions .icon-button {
+  min-width: 55px;
+  min-height: 30px;
+  padding: 5px 9px;
+  font-size: 10px;
+}
+
+@keyframes saving-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 空の状態 */
+
+.empty-state {
+  display: none;
+  text-align: center;
+  padding: 32px 18px;
+  border: 1px dashed #38383d;
+  border-radius: 14px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.empty-state.visible {
+  display: block;
+}
+
+/* 下部ナビゲーション */
+
+.bottom-nav {
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+  width: min(560px, calc(100% - 24px));
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 9px 7px;
+  background: rgba(23, 23, 25, .96);
+  border: 1px solid #38383d;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px #0008;
+  backdrop-filter: blur(16px);
+}
+
+.nav-item {
+  border: 0;
+  background: transparent;
+  color: #85858b;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 48px;
+  cursor: pointer;
+}
+
+.nav-item > span {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.nav-item small {
+  font-size: 8px;
+  letter-spacing: .5px;
+}
+
+.nav-item.active {
+  background: #303034;
+  color: #f4f4f5;
+}
+
+/* 追加ボタン */
+
+.floating-add {
+  position: fixed;
+  z-index: 11;
+  right: max(24px, calc((100vw - 1000px) / 2));
+  bottom: 100px;
+  width: 54px;
+  height: 54px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  background: #ededf0;
+  color: #111;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  box-shadow: 0 6px 24px #0007;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s;
+}
+
+.floating-add span {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform .2s;
+}
+
+.floating-add:hover span {
+  transform: rotate(90deg);
+}
+
+/* 追加モーダル */
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 30;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, .72);
+  backdrop-filter: blur(5px);
+}
+
+.modal-backdrop.hidden {
+  display: none;
+}
+
+.modal {
+  width: min(100%, 500px);
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 12px 24px 25px;
+  background: #171719;
+  border: 1px solid #3a3a3f;
+  border-radius: 23px;
+  box-shadow: 0 20px 90px #0008;
+  animation: slide-up .2s ease-out;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-handle {
+  width: 40px;
+  height: 4px;
+  border-radius: 10px;
+  background: #55555b;
+  margin: 0 auto 22px;
+}
+
+.modal-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-heading .eyebrow {
+  margin-bottom: 3px;
+}
+
+.modal-heading h2 {
+  font-size: 21px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border: 1px solid #414146;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.add-type-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  margin: 23px 0;
+}
+
+.add-type {
+  padding: 10px 5px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.add-type.active {
+  background: #e6e6e9;
+  border-color: #e6e6e9;
+  color: #111;
+}
+
+/* 入力フォーム */
+
+.entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.entry-form.hidden {
+  display: none;
+}
+
+.entry-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #c9c9ce;
+  font-size: 12px;
+}
+
+.entry-form input,
+.entry-form select {
+  width: 100%;
+  min-height: 45px;
+  border: 1px solid #3b3b40;
+  border-radius: 10px;
+  background: #101012;
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+}
+
+.entry-form input::placeholder {
+  color: #65656b;
+}
+
+.entry-form input:focus,
+.entry-form select:focus {
+  border-color: #a7a7af;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.primary-button {
+  width: 100%;
+  min-height: 47px;
+  border: 0;
+  border-radius: 11px;
+  background: #e8e8eb;
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.primary-button:hover {
+  background: white;
+}
+
+/* 通知 */
+
+.toast {
+  position: fixed;
+  z-index: 50;
+  left: 50%;
+  bottom: 175px;
+  transform: translate(-50%, 10px);
+  opacity: 0;
+  pointer-events: none;
+  background: #eeeeef;
+  color: #151515;
+  padding: 10px 17px;
+  border-radius: 30px;
+  font-size: 12px;
+  transition: opacity .2s, transform .2s;
+  white-space: nowrap;
+  max-width: calc(100% - 32px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* フッター */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 50px 7% 20px;
+  color: #626267;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* タブレット・スマートフォン */
+
+@media (max-width: 700px) {
+  .topbar {
+    height: 62px;
+    padding: 0 20px;
+  }
+
+  .topbar-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .app {
+    width: calc(100% - 36px);
+  }
+
+  .view {
+    padding-top: 26px;
+  }
+
+  .welcome {
+    padding: 27px 0 30px;
+  }
+
+  .welcome h1 {
+    font-size: clamp(30px, 9vw, 43px);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .summary-card {
+    min-height: 142px;
+    padding: 17px 19px;
+  }
+
+  .summary-card > strong {
+    margin-top: 12px;
+    font-size: 28px;
+  }
+
+  .card-detail {
+    margin-top: 5px;
+  }
+
+  .home-section {
+    margin-top: 36px;
+  }
+
+  .section-heading {
+    margin-top: 28px;
+  }
+
+  .compact-heading {
+    margin-top: 0;
+  }
+
+  .page-heading h1 {
+    font-size: 30px;
+  }
+
+  .stat-strip {
+    gap: 7px;
+  }
+
+  .stat-box {
+    padding: 12px 10px;
+  }
+
+  .stat-box strong {
+    font-size: 19px;
+  }
+
+  .money-overview {
+    padding: 20px;
+  }
+
+  .list-card {
+    padding: 14px 12px;
+    gap: 9px;
+  }
+
+  .list-card-side strong {
+    font-size: 12px;
+  }
+
+  .card-actions {
+    gap: 5px;
+  }
+
+  .icon-button {
+    min-width: 29px;
+    min-height: 29px;
+  }
+
+  .quick-savings-panel {
+    padding: 17px;
+  }
+
+  .savings-card {
+    padding: 17px 14px;
+  }
+
+  .savings-monthly-plan {
+    padding: 12px;
+  }
+
+  .savings-monthly-plan strong {
+    font-size: 21px;
+  }
+
+  .savings-actions {
+    gap: 7px;
+  }
+
+  .savings-mode-button {
+    min-height: 34px;
+    padding: 7px 12px;
+  }
+
+  .saving-quick-panel {
+    padding: 12px;
+  }
+
+  .saving-amount-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .saving-amount-button {
+    min-height: 36px;
+    font-size: 10px;
+    padding: 6px 2px;
+  }
+
+  .floating-add {
+    right: 20px;
+    bottom: 96px;
+    width: 52px;
+    height: 52px;
+  }
+
+  .modal-backdrop {
+    padding: 0;
+  }
+
+  .modal {
+    width: 100%;
+    max-height: 90vh;
+    border-radius: 23px 23px 0 0;
+    padding: 12px 20px 30px;
+  }
+
+  .add-type-row {
+    gap: 5px;
+  }
+
+  .add-type {
+    font-size: 11px;
+    padding: 10px 3px;
+  }
+
+  footer {
+    padding: 35px 20px 15px;
+  }
+}
+
+@media (max-width: 380px) {
+  .app {
+    width: calc(100% - 26px);
+  }
+
+  .brand {
+    gap: 7px;
+    letter-spacing: 2px;
+  }
+
+  .topbar-label {
+    letter-spacing: 0;
+  }
+
+  .stat-box {
+    padding: 10px 7px;
+  }
+
+  .stat-box span {
+    font-size: 10px;
+  }
+
+  .stat-box strong {
+    font-size: 17px;
+  }
+
+  .saving-amount-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .list-card {
+    flex-wrap: wrap;
+  }
+
+  .list-card-main {
+    flex-basis: calc(100% - 45px);
+  }
+
+  .list-card .card-actions {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .add-type-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 701px) {
+  .modal-backdrop {
+    align-items: center;
+  }
+
+  .modal {
+    border-radius: 23px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+
+  .saving-quick-panel {
+    animation: none;
+  }
+}
+/* ========================================
+   NOIR｜iPhone向け最終調整
+   既存CSSの一番下に追加
+======================================== */
+
+/* 画面幅・スクロールの調整 */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 0;
+  overflow-x: hidden;
+  padding-bottom: calc(150px + env(safe-area-inset-bottom, 0px));
+}
+
+.app,
+.view,
+.dashboard-grid,
+.menu-list,
+.item-list {
+  min-width: 0;
+}
+
+/* iPhoneのノッチ・画面端に配慮 */
+.topbar {
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* カードや一覧の文字がはみ出さないようにする */
+.summary-card,
+.stat-box,
+.money-overview,
+.entry-card,
+.list-card,
+.savings-card,
+.quick-savings-panel {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+.menu-item,
+.filter-button,
+.nav-item,
+.icon-button,
+.check-button,
+.savings-mode-button,
+.saving-amount-button,
+.add-type,
+.primary-button,
+.close-button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 下部ナビゲーションを安全領域に合わせる */
+.bottom-nav {
+  bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  padding-bottom: max(9px, env(safe-area-inset-bottom, 0px));
+}
+
+/* ＋ボタンをナビゲーションの上に配置 */
+.floating-add {
+  bottom: calc(94px + env(safe-area-inset-bottom, 0px));
+  right: max(20px, env(safe-area-inset-right, 0px));
+  z-index: 20;
+}
+
+/* 入力モーダル：画面内でスクロール可能にする */
+.modal-backdrop {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding:
+    16px
+    max(16px, env(safe-area-inset-right, 0px))
+    max(16px, env(safe-area-inset-bottom, 0px))
+    max(16px, env(safe-area-inset-left, 0px));
+}
+
+.modal {
+  max-height: calc(100dvh - 32px);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 入力中にiPhoneが自動拡大しないようにする */
+.entry-form input,
+.entry-form select {
+  font-size: 16px;
+  scroll-margin-bottom: 24px;
+}
+
+/* スマホで押しやすい操作ボタン */
+@media (max-width: 700px) {
+  .app {
+    width: calc(100% - 32px);
+  }
+
+  .view {
+    padding-top: 22px;
+  }
+
+  .section-heading {
+    align-items: center;
+  }
+
+  .dashboard-grid {
+    gap: 10px;
+  }
+
+  .summary-card {
+    border-radius: 16px;
+  }
+
+  .list-card {
+    align-items: flex-start;
+  }
+
+  .list-card-side {
+    max-width: 42%;
+    overflow-wrap: anywhere;
+  }
+
+  .card-actions {
+    max-width: 100%;
+  }
+
+  .icon-button {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .check-button {
+    width: 25px;
+    height: 25px;
+  }
+
+  .floating-add {
+    width: 52px;
+    height: 52px;
+  }
+
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    width: 100%;
+    max-height: 85vh;
+    max-height: 85dvh;
+    padding:
+      12px
+      20px
+      max(24px, env(safe-area-inset-bottom, 0px));
+    border-radius: 23px 23px 0 0;
+  }
+
+  .entry-form {
+    gap: 14px;
+  }
+
+  .entry-form input,
+  .entry-form select {
+    min-height: 48px;
+  }
+
+  .primary-button {
+    min-height: 49px;
+  }
+
+  footer {
+    padding-bottom: 24px;
+  }
+}
+
+/* 小さなiPhone画面 */
+@media (max-width: 380px) {
+  .app {
+    width: calc(100% - 24px);
+  }
+
+  .topbar {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .brand {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  .brand-mark {
+    width: 31px;
+    height: 31px;
+  }
+
+  .topbar-label {
+    font-size: 8px;
+  }
+
+  .stat-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stat-box {
+    padding: 10px 6px;
+  }
+
+  .stat-box strong {
+    font-size: 16px;
+  }
+
+  .money-split {
+    gap: 12px;
+  }
+
+  .list-card-side {
+    max-width: 100%;
+  }
+
+  .add-type-row {
+    gap: 6px;
+  }
+}
+
+/* PCではモーダルを中央に表示 */
+@media (min-width: 701px) {
+  .modal-backdrop {
+    align-items: center;
+  }
+
+  .modal {
+    max-height: 88vh;
+    border-radius: 23px;
+  }
+}
+
+/* 動きを減らす設定を使っている場合 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
