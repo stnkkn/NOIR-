@@ -1655,17 +1655,25 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
-/* ToDo入力画面の項目の重なりを防ぐ */
-#todoForm .form-group,
+
+}
+/* ToDo入力欄：期限と優先度を縦に並べる */
 #todoForm .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
   min-width: 0;
-  margin-bottom: 16px;
+}
+
+#todoForm .form-row > * {
+  width: 100%;
+  min-width: 0;
 }
 
 #todoForm input,
-#todoForm select,
-#todoForm textarea {
-  box-sizing: border-box;
-  max-width: 100%;
+#todoForm select {
+  width: 100%;
   min-width: 0;
+  box-sizing: border-box;
 }
