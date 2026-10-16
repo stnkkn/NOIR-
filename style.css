@@ -1655,3 +1655,17 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+/* ToDo入力画面の項目の重なりを防ぐ */
+#todoForm .form-group,
+#todoForm .form-row {
+  min-width: 0;
+  margin-bottom: 16px;
+}
+
+#todoForm input,
+#todoForm select,
+#todoForm textarea {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 0;
+}
