@@ -1091,11 +1091,31 @@ p {
   border-color: #a7a7af;
 }
 
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+#todoForm .form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
 }
+
+#todoForm .form-row > label {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+#todoForm .form-row input,
+#todoForm .form-row select {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+
 
 .primary-button {
   width: 100%;
